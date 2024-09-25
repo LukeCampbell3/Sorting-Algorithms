@@ -9,12 +9,7 @@ namespace Sorting_Algorithms.Data
 {
     internal class IterativeSort<T> : ISort<T> where T : IComparable<T>
     {
-        //public int CompareTo(T? other)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        void ISort<T>.Sort(List<T> values)
+        public void Sort(List<T> array, int left, int right)
         {
             throw new NotImplementedException();
         }
