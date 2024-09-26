@@ -66,4 +66,13 @@
 	  <Folder Include="Data\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="IterativePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RecursivePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

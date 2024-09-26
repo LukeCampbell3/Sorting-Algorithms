@@ -8,17 +8,18 @@
             InitializeComponent();
         }
 
-        private async void LoadIntegerTestData(object sender, EventArgs e)
+        public async void NavigateIterativePage(object sender, EventArgs e)
         {
-            {
-                // Open file picker to select a file
-                var result = await FilePicker.Default.PickAsync(new PickOptions
-                {
-                    PickerTitle = "Select a File",
-                    // FileTypes = FilePickerFileType. // Uncomment and configure if needed
-                });
-            }
+            // Navigate to SecondPage
+            await Navigation.PushAsync(new IterativePage());
         }
+
+        private void NavigateRecursivePage(object sender, EventArgs e)
+        {
+            // Navigation logic, e.g.:  
+            Navigation.PushAsync(new RecursivePage());
+        }
+
     }
 }
 

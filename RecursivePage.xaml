@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sorting_Algorithms.RecursivePage"
+             Title="RecursivePage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to our Recursive Page!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label x:Name="GameMessage" 
+        Text="Press 'Load' to load book test data" 
+        HorizontalOptions="Center"
+        TextColor="CornflowerBlue"
+        FontSize="Medium"
+        Margin="0,10" />
+
+        <Button x:Name="LoadButton"
+        Text="Load"
+        HorizontalOptions="Center"
+        Clicked="LoadBookData"
+        BackgroundColor="LightGoldenrodYellow"
+        TextColor="CornflowerBlue"
+        FontSize="Medium"
+        WidthRequest="100"
+        HeightRequest="70"
+        Margin="0,10"/>
+        
+    </VerticalStackLayout>
+</ContentPage>
