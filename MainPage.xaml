@@ -19,22 +19,22 @@
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label x:Name="GameMessage" 
-            Text="Press 'Start' to load ships from a file." 
+            Text="Press 'Load' to load int test data" 
             HorizontalOptions="Center"
-       TextColor="CornflowerBlue"
-       FontSize="Medium"
-       Margin="0,10" />
+            TextColor="CornflowerBlue"
+            FontSize="Medium"
+            Margin="0,10" />
 
-            <Button x:Name="StartButton"
-        Text="Start"
-        HorizontalOptions="Center"
-        Clicked="OnStartButtonClicked"
-        BackgroundColor="LightGoldenrodYellow"
-        TextColor="CornflowerBlue"
-        FontSize="Medium"
-        WidthRequest="100"
-        HeightRequest="70"
-        Margin="0,10"/>
+            <Button x:Name="LoadButton"
+            Text="Load"
+            HorizontalOptions="Center"
+            Clicked="LoadIntegerTestData"
+            BackgroundColor="LightGoldenrodYellow"
+            TextColor="CornflowerBlue"
+            FontSize="Medium"
+            WidthRequest="100"
+            HeightRequest="70"
+            Margin="0,10"/>
 
 
 
