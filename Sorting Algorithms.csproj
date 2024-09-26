@@ -63,10 +63,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Data\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="IterativePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
