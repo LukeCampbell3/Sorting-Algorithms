@@ -1,22 +1,24 @@
 ﻿using Sorting_Algorithms.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sorting_Algorithms.Data
 {
-    internal class IterativeSort<T> : ISort<T> where T : IComparable<T> 
+    public class IterativeSort<T> : ISort<T> where T : IComparable<T>
     {
-        public void Sort(List<T> array, int left, int right)
+        public void Sort(List<T> values, int left, int right)
         {
-            throw new NotImplementedException();
+            for (int i = left; i < right; i++)
+            {
+                for (int j = left; j < right - (i - left); j++)
+                {
+                    if (values[j].CompareTo(values[j + 1]) > 0)
+                    {
+                        // Swap values[j] and values[j + 1]
+                        T temp = values[j];
+                        values[j] = values[j + 1];
+                        values[j + 1] = temp;
+                    }
+                }
+            }
         }
-
-        //public int CompareTo(T? other)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
