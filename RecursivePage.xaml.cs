@@ -46,6 +46,14 @@ public partial class RecursivePage : ContentPage
                         await DisplayAlert("Error", $"Failed to parse the line: {line}", "OK");
                     }
                 }
+
+                // Apply RecursiveSort after all books are added
+                RecursiveSort<Book> recursiveSort = new RecursiveSort<Book>();
+                recursiveSort.Sort(Books, 0, Books.Count - 1); // Sort directly on Books
+
+                // Manually refresh the UI by resetting the ItemsSource if necessary
+                BookCollectionView.ItemsSource = null;
+                BookCollectionView.ItemsSource = Books; // Resetting the ItemsSource forces UI update
             }
         }
         catch (Exception ex)
@@ -53,5 +61,6 @@ public partial class RecursivePage : ContentPage
             await DisplayAlert("Error", $"Failed to load book data: {ex.Message}", "OK");
         }
     }
+
 
 }

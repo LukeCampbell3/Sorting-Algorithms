@@ -8,6 +8,6 @@ namespace Sorting_Algorithms.Services
 {
     public interface ISort<T> where T : IComparable<T> 
     {
-        public void Sort(List<T> array, int left, int right);
+        public void Sort(IList<T> array, int left, int right);
     }
 }

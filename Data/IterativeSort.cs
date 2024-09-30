@@ -4,7 +4,7 @@ namespace Sorting_Algorithms.Data
 {
     public class IterativeSort<T> : ISort<T> where T : IComparable<T>
     {
-        public void Sort(List<T> values, int left, int right)
+        public void Sort(IList<T> values, int left, int right)
         {
             for (int i = left; i < right; i++)
             {

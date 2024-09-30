@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sorting_Algorithms.Data
 {
-    internal class RecursiveSort<T>: ISort<T> where T : IComparable<T>
+    internal class RecursiveSort<T> : ISort<T> where T : IComparable<T>
     {
-        public void Sort(List<T> array, int left, int right)
+        public void Sort(IList<T> array, int left, int right)
         {
             int i = left;
             int j = right;
@@ -42,4 +42,5 @@ namespace Sorting_Algorithms.Data
                 Sort(array, i, right);
         }
     }
+
 }
