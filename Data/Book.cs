@@ -26,9 +26,33 @@ namespace Sorting_Algorithms.Data
         // CompareTo method for IComparable
         public int CompareTo(Book? other)
         {
-            // Implement your comparison logic here, e.g., compare by release date:
-            return this.ReleaseDate.CompareTo(other?.ReleaseDate);
+            if (other == null) return 1; // If the other book is null, this book comes first.
+
+            // Compare by last name
+            int lastnameComparison = this.LastName.CompareTo(other.LastName);
+            if (lastnameComparison != 0)
+            {
+                return lastnameComparison; // If last names are different, return the comparison result
+            }
+
+            // Compare by first name
+            int firstnameComparison = this.FirstName.CompareTo(other.FirstName);
+            if (firstnameComparison != 0)
+            {
+                return firstnameComparison; // If first names are different, return the comparison result
+            }
+
+            // Compare by title
+            int titleComparison = this.Title.CompareTo(other.Title);
+            if (titleComparison != 0)
+            {
+                return titleComparison; // If titles are different, return the comparison result
+            }
+
+            // Compare by release date
+            return this.ReleaseDate.CompareTo(other.ReleaseDate); // Compare by release date last
         }
+
 
         public bool TryParse(string str, out Book result)
         {
@@ -76,6 +100,17 @@ namespace Sorting_Algorithms.Data
             {
                 throw new FormatException($"Failed to parse the line: {str}");
             }
+        }
+
+        /// <summary>
+        /// I AM UNSURE IF WE REALLY NEED THIS BECAUSE WE ARE USING MAUI
+        /// We essentially go around this. 
+        /// We could use it maybe idk
+        /// </summary>
+        /// <returns>returns the Book object in string form</returns>
+        public override string ToString()
+        {
+            return($"{this.LastName},{this.LastName},\"{this.Title}\",{this.ReleaseDate.ToShortDateString()}");
         }
 
     }
