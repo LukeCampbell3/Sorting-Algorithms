@@ -30,10 +30,15 @@ namespace Sorting_Algorithms.Data
             return this.ReleaseDate.CompareTo(other?.ReleaseDate);
         }
 
-        // TryParse method that attempts to parse a string into a Book object
         public bool TryParse(string str, out Book result)
         {
             result = null;
+
+            // Skip separator lines (those that start with '+')
+            if (str.StartsWith("+"))
+            {
+                return false;
+            }
 
             // Define the regular expression pattern to match the format
             var pattern = @"^\|\s*(?<LastName>\w+)\s*\|\s*(?<FirstName>\w+)\s*\|\s*(?<Title>.+?)\s*\|\s*(?<ReleaseDate>\d{4}-\d{2}-\d{2})\s*\|$";
@@ -52,7 +57,7 @@ namespace Sorting_Algorithms.Data
                 // Try to parse the release date
                 if (DateTime.TryParse(match.Groups["ReleaseDate"].Value, out releaseDate))
                 {
-                    // Populate the result object
+                    // Create a Book object
                     result = new Book(lastName, firstName, title, releaseDate);
                     return true;
                 }
@@ -61,7 +66,6 @@ namespace Sorting_Algorithms.Data
             return false;
         }
 
-        // Parse method that calls TryParse and throws an exception if parsing fails
         public Book Parse(string str)
         {
             if (TryParse(str, out Book book))
@@ -70,8 +74,9 @@ namespace Sorting_Algorithms.Data
             }
             else
             {
-                throw new FormatException("Input string was not in the correct format.");
+                throw new FormatException($"Failed to parse the line: {str}");
             }
         }
+
     }
 }

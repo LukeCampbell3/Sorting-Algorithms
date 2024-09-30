@@ -38,7 +38,7 @@ public partial class RecursivePage : ContentPage
                     {
                         // Use the Book.Parse method to create a Book object
                         var book = new Book("", "", "", DateTime.MinValue).Parse(line);
-                        Books.Add(book); // Add the parsed book to the collection
+                        Books.Add(book); // Add the parsed book to the list
                     }
                     catch (FormatException)
                     {
@@ -53,4 +53,5 @@ public partial class RecursivePage : ContentPage
             await DisplayAlert("Error", $"Failed to load book data: {ex.Message}", "OK");
         }
     }
+
 }
