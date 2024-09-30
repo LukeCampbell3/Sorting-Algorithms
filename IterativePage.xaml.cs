@@ -1,7 +1,7 @@
 namespace Sorting_Algorithms;
 using Sorting_Algorithms.Data;
 using System.Collections.ObjectModel;
-
+using System.Diagnostics;
 
 public partial class IterativePage : ContentPage
 {
@@ -26,7 +26,14 @@ public partial class IterativePage : ContentPage
         if (result != null)
         {
             var filePath = result.FullPath;
+            var fileName = Path.GetFileName(filePath);
             var integers = LoadIntegerTestData(filePath);
+
+            // Initialize the stopwatch
+            Stopwatch stopwatch = new Stopwatch();
+
+            // Start the stopwatch before sorting
+            stopwatch.Start();
 
             // bubble sort
             IterativeSort<int> iterativeSort = new IterativeSort<int>();
@@ -38,8 +45,11 @@ public partial class IterativePage : ContentPage
             // Pass the left and right indices to the Sort method
             iterativeSort.Sort(integers, left, right);
 
+            stopwatch.Stop();
+            var elapsedTime = stopwatch.ElapsedMilliseconds;
+
             // Display sorted integers (or perform further actions)
-            GameMessage.Text = $"Sorted {integers.Count} integers! Sorted integers: {string.Join(", ", integers)}";
+            GameMessage.Text = $"Sorted {fileName} in {elapsedTime} ms! Sorted integers: {string.Join(", ", integers)}";
         }
 
     }
@@ -72,6 +82,7 @@ public partial class IterativePage : ContentPage
             {
                 // Read file content
                 var fileContent = await File.ReadAllTextAsync(result.FullPath);
+                var fileName = Path.GetFileName(result.FullPath);
 
                 // Split the content into lines
                 var lines = fileContent.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
@@ -96,6 +107,25 @@ public partial class IterativePage : ContentPage
                         await DisplayAlert("Error", $"Failed to parse the line: {line}", "OK");
                     }
                 }
+
+                // Apply RecursiveSort after all books are added
+                RecursiveSort<Book> recursiveSort = new RecursiveSort<Book>();
+
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
+                recursiveSort.Sort(Books, 0, Books.Count - 1); // Sort directly on Books
+
+                stopwatch.Stop();
+
+                var elapsedTime = stopwatch.ElapsedMilliseconds;
+
+                GameMessage.Text = $"Loaded and sorted {fileName} in {elapsedTime} ms!";
+
+
+                // Manually refresh the UI by resetting the ItemsSource if necessary
+                BookCollectionView.ItemsSource = null;
+                BookCollectionView.ItemsSource = Books; // Resetting the ItemsSource forces UI update
             }
         }
         catch (Exception ex)
