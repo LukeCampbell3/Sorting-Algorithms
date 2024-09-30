@@ -8,13 +8,68 @@ public partial class RecursivePage : ContentPage
     public ObservableCollection<Book> Books { get; set; }
 
     public RecursivePage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         Books = new ObservableCollection<Book>();
         BindingContext = this;
     }
 
     private async void LoadBookData(object sender, EventArgs e)
+    {
+        try
+        {
+            // Open file picker to select a file
+            var result = await FilePicker.Default.PickAsync(new PickOptions
+            {
+                PickerTitle = "Select a book test data file",
+            });
+
+            if (result != null)
+            {
+                // Read file content
+                var fileContent = await File.ReadAllTextAsync(result.FullPath);
+
+                // Split the content into lines
+                var lines = fileContent.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+                foreach (var line in lines)
+                {
+                    // Skip lines with '+' or the header line (which starts with "| Last Name" or "|-------------")
+                    if (line.Contains('+') || line.Trim().StartsWith("| Last Name") || line.Trim().StartsWith("|-------------"))
+                    {
+                        continue; // Skip this iteration
+                    }
+
+                    try
+                    {
+                        // Use the Book.Parse method to create a Book object
+                        var book = new Book("", "", "", DateTime.MinValue).Parse(line);
+                        Books.Add(book); // Add the parsed book to the list
+                    }
+                    catch (FormatException)
+                    {
+                        // Handle invalid format 
+                        await DisplayAlert("Error", $"Failed to parse the line: {line}", "OK");
+                    }
+                }
+
+                // Apply RecursiveSort after all books are added
+                RecursiveSort<Book> recursiveSort = new RecursiveSort<Book>();
+                recursiveSort.Sort(Books, 0, Books.Count - 1); // Sort directly on Books
+
+                // Manually refresh the UI by resetting the ItemsSource if necessary
+                BookCollectionView.ItemsSource = null;
+                BookCollectionView.ItemsSource = Books; // Resetting the ItemsSource forces UI update
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to load book data: {ex.Message}", "OK");
+        }
+    }
+
+
+    /*private async void LoadBookData(object sender, EventArgs e)
     {
         try
         {
@@ -60,7 +115,47 @@ public partial class RecursivePage : ContentPage
         {
             await DisplayAlert("Error", $"Failed to load book data: {ex.Message}", "OK");
         }
+    }*/
+    private List<int> LoadIntegerTestData(string filePath)
+    {
+        List<int> integers = new List<int>();
+        var lines = File.ReadAllLines(filePath);
+        foreach (var line in lines)
+        {
+            if (int.TryParse(line, out int number))
+            {
+                integers.Add(number);
+            }
+        }
+        return integers;
     }
 
+    private async void LoadIntegerTestData(object sender, EventArgs e)
+    {
+        // Open file picker to select a file 
+        var result = await FilePicker.Default.PickAsync(new PickOptions
+        {
+            PickerTitle = "Select an integer test file",
+        });
 
+        if (result != null)
+        {
+            var filePath = result.FullPath;
+            var integers = LoadIntegerTestData(filePath);
+
+            // bubble sort
+            IterativeSort<int> iterativeSort = new IterativeSort<int>();
+
+            // Define the left and right for sorting the list, sort whole list 
+            int left = 0;
+            int right = integers.Count - 1;
+
+            // Pass the left and right indices to the Sort method
+            iterativeSort.Sort(integers, left, right);
+
+            // Display sorted integers (or perform further actions)
+            GameMessage.Text = $"Sorted {integers.Count} integers! Sorted integers: {string.Join(", ", integers)}";
+        }
+
+    }
 }

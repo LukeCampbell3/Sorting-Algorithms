@@ -3,41 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sorting_Algorithms.MainPage"
              BackgroundColor="Azure">
-            
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+        <Grid>
+            <!-- Background image -->
+            <Image Source="cool_techy_image.jpg"
+               Aspect="AspectFill"
+               Opacity=".25"/>
+            
+            <!-- Overlay content -->
+                <Label x:Name="GameMessage" 
+                   Text="Choose A Sort" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   TextColor="DarkCyan"
+                   FontAttributes="Bold"
+                   FontSize="100"
+                   Margin="5,10" />
+                    
+                    
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="NavigateRecursiveButton"
+                    Text="Recursive Sort"
+                    HorizontalOptions="Center"
+                    Clicked="NavigateRecursivePage"
+                    FontSize="40"
+                    BackgroundColor="DarkCyan"
+                    TextColor="LightCyan"
+                    Margin="0,10"/>
 
-            <Label x:Name="GameMessage" 
-            Text="Choose a sort!" 
-            HorizontalOptions="Center"
-            TextColor="CornflowerBlue"
-            FontSize="Medium"
-            Margin="0,10" />
-
-            <Button x:Name="NavigateRecursiveButton"
-            Text="Recursive Sort"
-            HorizontalOptions="Center"
-            Clicked="NavigateRecursivePage"
-            BackgroundColor="LightGoldenrodYellow"
-            TextColor="CornflowerBlue"
-            FontSize="Medium"/>
-
-            <Button x:Name="NavigateIterative"
-            Text="Iterative Sort"
-            HorizontalOptions="Center"
-            Clicked="NavigateIterativePage"
-            BackgroundColor="LightGoldenrodYellow"
-            TextColor="CornflowerBlue"
-            FontSize="Medium"/>
-
-        </VerticalStackLayout>
+                <Button x:Name="NavigateIterative"
+                    Text="Iterative Sort"
+                    HorizontalOptions="Center"
+                    Clicked="NavigateIterativePage"
+                    BackgroundColor="DarkCyan"
+                    TextColor="LightCyan"
+                    FontSize="40" 
+                    Margin="0,10"/>
+            </StackLayout>
+        </Grid>
     </ScrollView>
-
 </ContentPage>

@@ -2,45 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sorting_Algorithms.IterativePage"
-             Title="IterativePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Iterative Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-        <Label x:Name="GameMessage" 
-        Text="Press 'Load' to load int test data" 
+             Title="Iterative Page"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label x:Name="GameMessage" 
+        Text="Choose which data you want to upload" 
         HorizontalOptions="Center"
-        TextColor="CornflowerBlue"
-        FontSize="Medium"
+        TextColor="DarkCyan"
+        FontSize="40"
         Margin="0,10" />
-        
-        <Button x:Name="LoadButton"
-        Text="Load"
+
+            <Button x:Name="LoadIntButton"
+        Text="Load Int Data"
         HorizontalOptions="Center"
-        Clicked="LoadBookData"
-        BackgroundColor="LightGoldenrodYellow"
-        TextColor="CornflowerBlue"
+        Clicked="LoadIntegerTestData"
+        BackgroundColor="DarkCyan"
+        TextColor="LightCyan"
         FontSize="Medium"
-        WidthRequest="100"
+        WidthRequest="200"
         HeightRequest="70"
         Margin="0,10"/>
 
-        <!-- Table displaying book data -->
-        <CollectionView x:Name="BookCollectionView"
+            <Button x:Name="LoadBookButton"
+        Text="Load Book Data"
+        HorizontalOptions="Center"
+        Clicked="LoadBookData"
+        BackgroundColor="DarkCyan"
+        TextColor="LightCyan"
+        FontSize="Medium"
+        WidthRequest="200"
+        HeightRequest="70"
+        Margin="0,10"/>
+
+            <!-- Table displaying book data -->
+            <CollectionView x:Name="BookCollectionView"
                 ItemsSource="{Binding Books}"
                 VerticalOptions="FillAndExpand">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*">
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding LastName}" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" />
-                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Title}" />
-                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding ReleaseDate, StringFormat='{0:yyyy-MM-dd}'}" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*">
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding LastName}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding Title}" />
+                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding ReleaseDate, StringFormat='{0:yyyy-MM-dd}'}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

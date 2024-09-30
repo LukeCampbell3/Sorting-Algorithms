@@ -78,6 +78,12 @@ public partial class IterativePage : ContentPage
 
                 foreach (var line in lines)
                 {
+                    // Skip lines with '+' or the title header (which usually starts with "| Last Name")
+                    if (line.Contains('+') || line.StartsWith("| Last Name"))
+                    {
+                        continue;
+                    }
+
                     try
                     {
                         // Use the Book.Parse method to create a Book object
