@@ -50,20 +50,20 @@
         </CollectionView>-->
 
         <!-- Table displaying book data -->
-        <CollectionView x:Name="BookCollectionView"
-        ItemsSource="{Binding Books}"
-        VerticalOptions="FillAndExpand">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*">
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding LastName}" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" />
-                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Title}" />
-                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding ReleaseDate, StringFormat='{0:yyyy-MM-dd}'}" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+            <CollectionView x:Name="BookCollectionView"
+                ItemsSource="{Binding Books}"
+                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*,*">
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding LastName}" TextColor="Black" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" TextColor="Black" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding Title}" TextColor="Black" />
+                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding ReleaseDate, StringFormat='{0:yyyy-MM-dd}'}" TextColor="Black" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
         </ScrollView>
 </ContentPage>
