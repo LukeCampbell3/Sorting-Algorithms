@@ -8,6 +8,9 @@ public partial class IterativePage : ContentPage
     // ObservableCollection to bind to the CollectionView
     public ObservableCollection<Book> Books { get; set; }
 
+    /// <summary>
+    /// initializes iterative page stuff 
+    /// </summary>
     public IterativePage()
 	{
 		InitializeComponent();
@@ -15,6 +18,12 @@ public partial class IterativePage : ContentPage
         BindingContext = this;
     }
 
+    /// <summary>
+    /// Called when the button on xaml page is pressed that uses file picker to load in the test files for integer data and
+    /// sorts it automatically and then prints it onscreen for the user to view 
+    /// </summary>
+    /// <param name="sender">button stuff</param>
+    /// <param name="e">button stuff</param>
     private async void LoadIntegerTestData(object sender, EventArgs e)
     {
         // Open file picker to select a file 
@@ -54,6 +63,11 @@ public partial class IterativePage : ContentPage
 
     }
 
+    /// <summary>
+    /// Aids in parsing int data and adds numbers to a list to be easily sorted 
+    /// </summary>
+    /// <param name="filePath">string representation of the file path</param>
+    /// <returns>list of ints in file</returns>
     private List<int> LoadIntegerTestData(string filePath)
     {
         List<int> integers = new List<int>();
@@ -68,6 +82,12 @@ public partial class IterativePage : ContentPage
         return integers;
     }
 
+    /// <summary>
+    /// Loads in book data from a book test data file and 
+    /// sorts it automatically and displays it in a table format on the screen 
+    /// </summary>
+    /// <param name="sender">button stuff</param>
+    /// <param name="e">button stuff </param>
     private async void LoadBookData(object sender, EventArgs e)
     {
         try
