@@ -123,8 +123,7 @@ public partial class RecursivePage : ContentPage
                     }
                     catch (FormatException)
                     {
-                        // Handle invalid format (optional)
-                        await DisplayAlert("Error", $"Failed to parse the line: {line}", "OK");
+                        
                     }
                 }
 
