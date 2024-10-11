@@ -25,7 +25,7 @@
             HeightRequest="70"
             Margin="0,10"/>
 
-        <Button x:Name="LoadIntButton"
+            <Button x:Name="LoadIntButton"
             Text="Load Int Data"
             HorizontalOptions="Center"
             Clicked="LoadIntegerTestData"
@@ -36,20 +36,7 @@
             HeightRequest="70"
             Margin="0,10"/>
 
-        <!-- Simplified table displaying book data using .ToString() -->
-        <!--<CollectionView x:Name="BookCollectionView"
-                ItemsSource="{Binding Books}"
-                VerticalOptions="FillAndExpand">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
-                        <Label Text="{Binding .}" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
-
-        <!-- Table displaying book data -->
+            <!-- Table displaying book data -->
             <CollectionView x:Name="BookCollectionView"
                 ItemsSource="{Binding Books}"
                 VerticalOptions="FillAndExpand">

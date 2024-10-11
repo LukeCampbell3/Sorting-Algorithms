@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sorting_Algorithms.Data
 {
+    /// <summary>
+    /// Book class
+    /// </summary>
     public class Book : IComparable<Book>
     {
         public string LastName { get; set; }
@@ -14,7 +17,13 @@ namespace Sorting_Algorithms.Data
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }
 
-        // Constructor
+        /// <summary>
+        /// This is the constructor for the Book object
+        /// </summary>
+        /// <param name="lastName">String containing Author's last name</param>
+        /// <param name="firstName">String containing Author's first name</param>
+        /// <param name="title">String containing the Book's title</param>
+        /// <param name="releaseDate">DateTime which containing Book's release date</param>
         public Book(string lastName, string firstName, string title, DateTime releaseDate)
         {
             this.LastName = lastName;
@@ -23,7 +32,17 @@ namespace Sorting_Algorithms.Data
             this.ReleaseDate = releaseDate;
         }
 
-        // CompareTo method for IComparable
+        /// <summary>
+        /// Makes sure Book is comparable
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>
+        /// the priority in which the book is to be sorted
+        ///     LastName
+        ///     FirstName
+        ///     Title
+        ///     ReleaseDate
+        /// </returns>
         public int CompareTo(Book? other)
         {
             if (other == null) return 1; // If the other book is null, this book comes first.
