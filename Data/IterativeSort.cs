@@ -4,15 +4,16 @@ namespace Sorting_Algorithms.Data
 {
     /// <summary>
     /// BubbleSort
-    /// coutesy of 
-    /// 
+    /// courtesy of 
+    /// https://www.geeksforgeeks.org/bubble-sort-algorithm/ 
+    /// https://stackoverflow.com/questions/40578027/c-sharp-what-is-the-advantage-of-using-interfaces-for-simulating-multiple-inheri/40578389#40578389
     /// </summary>
     /// <typeparam name="T">Makes sure type T is comparable</typeparam>
     public class IterativeSort<T> : ISort<T> where T : IComparable<T>
     {
         /// <summary>
         /// Small values bubble to the front of the array
-        /// Each value is compared and swapped if smaller than current value
+        /// Each value is compared and swapped if smaller than current value 
         /// (thus resulting in the O(n^2) complexity)
         /// </summary>
         /// <param name="values">List of T that is to be sorted</param>
