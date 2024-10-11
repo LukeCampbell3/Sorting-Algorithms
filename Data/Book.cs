@@ -7,23 +7,29 @@ using System.Threading.Tasks;
 
 namespace Sorting_Algorithms.Data
 {
-    /// <summary>
-    /// Book class
-    /// </summary>
     public class Book : IComparable<Book>
     {
+        /// <summary>
+        /// Gets/sets the last name of the author.
+        /// </summary>
         public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Title { get; set; }
-        public DateTime ReleaseDate { get; set; }
 
         /// <summary>
-        /// This is the constructor for the Book object
+        /// Gets/sets the first name of the author.
         /// </summary>
-        /// <param name="lastName">String containing Author's last name</param>
-        /// <param name="firstName">String containing Author's first name</param>
-        /// <param name="title">String containing the Book's title</param>
-        /// <param name="releaseDate">DateTime which containing Book's release date</param>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets/sets the title of the book.
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets/sets the release date of the book.
+        /// </summary>
+        public DateTime ReleaseDate { get; set; }
+
+        // Constructor
         public Book(string lastName, string firstName, string title, DateTime releaseDate)
         {
             this.LastName = lastName;
@@ -32,17 +38,7 @@ namespace Sorting_Algorithms.Data
             this.ReleaseDate = releaseDate;
         }
 
-        /// <summary>
-        /// Makes sure Book is comparable
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns>
-        /// the priority in which the book is to be sorted
-        ///     LastName
-        ///     FirstName
-        ///     Title
-        ///     ReleaseDate
-        /// </returns>
+        // CompareTo method for IComparable
         public int CompareTo(Book? other)
         {
             if (other == null) return 1; // If the other book is null, this book comes first.
@@ -72,7 +68,14 @@ namespace Sorting_Algorithms.Data
             return this.ReleaseDate.CompareTo(other.ReleaseDate); // Compare by release date last
         }
 
-
+        /// <summary>
+        /// Parses a string into a Book object from a file to be able to sort 
+        /// data from a file 
+        /// Uses regex to do this 
+        /// </summary>
+        /// <param name="str">The string to parse.</param>
+        /// <param name="result">The resulting Book object if parsing succeeds.</param>
+        /// <returns>True if parsing was successful; otherwise, false.</returns>
         public bool TryParse(string str, out Book result)
         {
             result = null;
@@ -109,6 +112,12 @@ namespace Sorting_Algorithms.Data
             return false;
         }
 
+        /// <summary>
+        /// Parses a string from the file into a Book object.
+        /// </summary>
+        /// <param name="str">The string to parse.</param>
+        /// <returns>The Book object parsed from the string.</returns>
+        /// <exception cref="FormatException">Thrown if the string is not in the correct format.</exception>
         public Book Parse(string str)
         {
             if (TryParse(str, out Book book))
